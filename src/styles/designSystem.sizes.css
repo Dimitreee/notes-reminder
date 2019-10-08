@@ -1,0 +1,12 @@
+:root {
+    --point: 4px;
+
+    --point-2x: calc(var(--point) * 2);
+    --point-3x: calc(var(--point) * 3);
+    --point-4x: calc(var(--point) * 4);
+    --point-5x: calc(var(--point) * 5);
+    --point-6x: calc(var(--point) * 6);
+    --point-7x: calc(var(--point) * 7);
+    --point-8x: calc(var(--point) * 8);
+    --point-90x: calc(var(--point) * 90);
+}
