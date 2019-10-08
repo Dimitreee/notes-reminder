@@ -1,19 +1,22 @@
 import * as React from 'react';
 import { FormRenderProps, withTypes } from 'react-final-form'
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import { Button } from '@blueprintjs/core';
-import TextInput from 'src/components/TextInput';
+import uuid from 'uuid';
+
 
 import List from 'src/components/List';
-import { noteFormValidator } from 'src/modules/NoteForm/noteFormValidators';
+import TextInput from 'src/components/TextInput';
+
+
+import { Note } from 'src/types/core';
+import { addNote } from 'src/store/notes/actions';
+import { AppState } from 'src/store';
 
 import { ADD } from 'src/constants/static/labels';
-import {Dispatch} from "redux";
-import {Note} from "../../types/core";
-import uuid from "uuid";
-import {addNote} from "../../store/notes/actions";
-import {connect} from "react-redux";
-import {AppState} from "../../store";
 
+import { noteFormValidator } from './noteFormValidators';
 
 export interface INoteFormValues {
     text: string,
