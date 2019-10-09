@@ -1,6 +1,6 @@
 import * as React from 'react';
 import uuid from 'uuid';
-import { pipe } from 'ramda';
+import { pipe } from 'lodash/fp';
 import { FormRenderProps, withTypes } from 'react-final-form'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
