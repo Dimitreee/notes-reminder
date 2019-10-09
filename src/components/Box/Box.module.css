@@ -33,3 +33,71 @@
 .collapseHorizontal {
     padding: var(--point) 0;
 }
+
+.displayFlex {
+    display: flex;
+}
+
+.displayBlock {
+    display: block;
+}
+
+.displayInlineBlock {
+    display: inline-block;
+}
+
+.displayInlineFlex {
+    display: inline-flex;
+}
+
+.flexDirection-row {
+    flex-direction: row;
+}
+
+.flexDirection-column {
+    flex-direction: column;
+}
+
+.flexDirection-rowReverse {
+    flex-direction: row-reverse;
+}
+
+.flexDirection-columnReverse {
+    flex-direction: column-reverse;
+}
+
+.justifyContent-flexStart {
+    justify-content: flex-start;
+}
+
+.justifyContent-flexEnd {
+    justify-content: flex-end;
+}
+
+.justifyContent-spaceBetween {
+    justify-content: space-between;
+}
+
+.justifyContent-spaceAround {
+    justify-content: space-around;
+}
+
+.justifyContent-spaceEvenly {
+    justify-content: space-evenly;
+}
+
+.justifyContent-stretch {
+    justify-content: stretch;
+}
+
+.alignItems-flexStart {
+    align-items: flex-start;
+}
+
+.alignItems-flexEnd {
+    align-items: flex-end;
+}
+
+.alignItems-center {
+    align-items: center;
+}

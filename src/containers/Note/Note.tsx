@@ -10,6 +10,7 @@ import { notesDictSelector } from 'src/selectors/notesSelectors';
 
 import { Paragraph } from 'src/components/typography';
 
+
 interface INoteOwnProps {
     id: string,
 }
