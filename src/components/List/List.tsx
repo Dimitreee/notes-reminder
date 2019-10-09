@@ -4,10 +4,10 @@ import Box from 'src/components/Box';
 const List: React.FC<{}> = ({ children }) => {
     const content = React
         .Children
-        .map(children, (child, index) => (<Box key={index}>{ child }</Box>));
+        .map(children, (child, index) => (<Box collapseHorizontal key={index}>{ child }</Box>));
 
     return (
-        <Box flat>
+        <Box flat collapse>
             { content }
         </Box>
     )

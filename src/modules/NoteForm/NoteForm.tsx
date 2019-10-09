@@ -1,9 +1,10 @@
 import * as React from 'react';
+import uuid from 'uuid';
+import { pipe } from 'ramda';
 import { FormRenderProps, withTypes } from 'react-final-form'
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { Button } from '@blueprintjs/core';
-import uuid from 'uuid';
 
 import Box from 'src/components/Box/Box';
 import List from 'src/components/List';
@@ -52,16 +53,17 @@ class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
                 initialValues={this.props.initialValues}
                 validate={noteFormValidator}
                 render={this.renderForm}
+                subscription={{ errors: true }}
             />
         )
     }
 
     private renderForm = (props: FormRenderProps<INoteFormValues>): JSX.Element => {
-        const { handleSubmit } = props;
+        const { handleSubmit, form } = props;
 
         return (
             <Box flat collapse>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={pipe(handleSubmit, form.reset)}>
                     <List>
                         <TextInput name="text" leftIcon="new-object" fill/>
                         <Button type="submit" text={ADD}/>

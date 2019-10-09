@@ -25,14 +25,14 @@ interface INoteDispatchProps {
     removeNote: (id: string) => void,
 }
 
-const Note: React.FC<INoteOwnProps & INoteStateProps & INoteDispatchProps> = ({ id, text, removeNote, }) => {
+const Note: React.FC<INoteOwnProps & INoteStateProps & INoteDispatchProps> = (props) => {
+    const { id, text, removeNote, } = props;
     const handleButtonClick = React.useCallback(() => removeNote(id), [id, removeNote]);
 
     return (
         <Card elevation={Elevation.ONE} interactive className={s.root}>
-            <Button icon="cube-remove" onClick={handleButtonClick}/>
-            <span>{id}</span>
             <Paragraph>{text}</Paragraph>
+            <Button icon="cube-remove" onClick={handleButtonClick}/>
         </Card>
     );
 };
