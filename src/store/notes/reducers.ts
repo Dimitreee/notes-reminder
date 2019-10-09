@@ -27,7 +27,7 @@ const reducer: Reducer<NotesState> = (state = initialState, action) => {
         case NoteActionTypes.REMOVE_NOTE: {
             const injectedId = action.payload;
 
-            const nextIds = state.ids.filter((id) => id === injectedId);
+            const nextIds = state.ids.filter((id) => id !== injectedId);
             const nextData = cloneDeep(state.data);
 
             delete nextData[injectedId];

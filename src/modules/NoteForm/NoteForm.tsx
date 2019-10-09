@@ -22,7 +22,7 @@ export interface INoteFormValues {
 }
 
 interface IDispatchProps {
-    addNote: (noteText: string) => void;
+    addNote: (note: Note) => void;
 }
 
 interface IOwnProps {
@@ -37,13 +37,17 @@ class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
     };
 
     private handleSubmit = (values: INoteFormValues) => {
-        this.props.addNote(values.text)
+        const note: Note = {
+            id: uuid.v1(),
+            text: values.text,
+        };
+
+        this.props.addNote(note)
     };
 
     public render () {
         return (
             <Form
-                validateOnBlur
                 onSubmit={this.handleSubmit}
                 initialValues={this.props.initialValues}
                 validate={noteFormValidator}
@@ -69,12 +73,7 @@ class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    addNote: (noteText: string) => {
-        const note: Note = {
-            id: uuid.v1(),
-            text: noteText
-        };
-
+    addNote: (note: Note) => {
         dispatch(addNote(note))
     }
 });

@@ -1,7 +1,5 @@
 import { action } from 'typesafe-actions';
-
 import { Note } from 'src/types/core';
-
 import { NoteActionTypes } from './types';
 
 
