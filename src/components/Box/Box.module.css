@@ -2,14 +2,34 @@
     padding: var(--point);
 }
 
-.rightSide {
-    margin: 0 0 0 auto;
+.flat {
+    width: 100%;
 }
 
-.leftSide {
-    margin: 0 auto 0 0;
+.collapse {
+    padding: 0;
 }
 
-.centered {
-    margin: 0 auto;
+.collapseTop {
+    padding-top: 0;
+}
+
+.collapseLeft {
+    padding-left: 0;
+}
+
+.collapseRight {
+    padding-right: 0;
+}
+
+.collapseBottom {
+    padding-bottom: 0;
+}
+
+.collapseVertical {
+    padding: 0 var(--point);
+}
+
+.collapseHorizontal {
+    padding: var(--point) 0;
 }

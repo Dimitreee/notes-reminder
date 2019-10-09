@@ -5,10 +5,9 @@ import { connect } from 'react-redux';
 import { Button } from '@blueprintjs/core';
 import uuid from 'uuid';
 
-
+import Box from 'src/components/Box/Box';
 import List from 'src/components/List';
 import TextInput from 'src/components/TextInput';
-
 
 import { Note } from 'src/types/core';
 import { addNote } from 'src/store/notes/actions';
@@ -57,12 +56,14 @@ class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
         const { handleSubmit } = props;
 
         return (
-            <form onSubmit={handleSubmit}>
-                <List>
-                    <TextInput name="text" leftIcon="new-object" fill/>
-                    <Button type="submit" text={ADD}/>
-                </List>
-            </form>
+            <Box flat collapse>
+                <form onSubmit={handleSubmit}>
+                    <List>
+                        <TextInput name="text" leftIcon="new-object" fill/>
+                        <Button type="submit" text={ADD}/>
+                    </List>
+                </form>
+            </Box>
         )
     };
 }

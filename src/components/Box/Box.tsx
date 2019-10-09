@@ -3,24 +3,39 @@ import classNames from 'classnames';
 
 import s from './Box.module.css';
 
-// should be nested onto flex-container
-enum Position {
-    LEFT = 'LEFT',
-    CENTER = 'CENTER',
-    RIGHT = 'RIGHT',
-};
-
 interface IBoxProps {
-    position?: Position,
+    flat?: boolean,
+    collapse?: boolean,
+    collapseTop?: boolean,
+    collapseLeft?: boolean,
+    collapseRight?: boolean,
+    collapseBottom?: boolean,
+    collapseVertical?: boolean,
+    collapseHorizontal?: boolean,
 }
 
 const Box: React.FC<IBoxProps> = (props) => {
-    const { children, position } = props;
+    const {
+        flat,
+        collapse,
+        children,
+        collapseTop,
+        collapseLeft,
+        collapseRight,
+        collapseBottom,
+        collapseVertical,
+        collapseHorizontal,
+    } = props;
 
     const className = classNames(s.root, {
-        [s.rightSide]: position === Position.LEFT,
-        [s.leftSide]: position === Position.RIGHT,
-        [s.centered]: position === Position.CENTER,
+        [s.flat]: flat,
+        [s.collapse]: collapse,
+        [s.collapseTop]: collapseTop,
+        [s.collapseLeft]: collapseLeft,
+        [s.collapseRight]: collapseRight,
+        [s.collapseBottom]: collapseBottom,
+        [s.collapseVertical]: collapseVertical,
+        [s.collapseHorizontal]: collapseHorizontal,
     });
 
     return (
@@ -30,5 +45,4 @@ const Box: React.FC<IBoxProps> = (props) => {
     )
 };
 
-export { Position as BoxPosition };
 export default Box;

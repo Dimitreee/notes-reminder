@@ -11,6 +11,7 @@ interface ITextInputProps {
     name: string,
     leftIcon: IconName | MaybeElement,
     fill: boolean,
+    withError?: boolean,
 }
 
 class TextInput extends React.PureComponent<ITextInputProps> {
@@ -30,7 +31,7 @@ class TextInput extends React.PureComponent<ITextInputProps> {
         });
 
         return (
-            <div>
+            <>
                 <InputGroup
                     {...input}
                     large
@@ -38,8 +39,8 @@ class TextInput extends React.PureComponent<ITextInputProps> {
                     fill={this.props.fill}
                     className={errorInputClassNames}
                 />
-                <FormError name={this.props.name}/>
-            </div>
+                {this.props.withError && <FormError name={this.props.name}/>}
+            </>
         )
     }
 }

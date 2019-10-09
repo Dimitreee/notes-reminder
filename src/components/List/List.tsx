@@ -7,7 +7,7 @@ const List: React.FC<{}> = ({ children }) => {
         .map(children, (child, index) => (<Box key={index}>{ child }</Box>));
 
     return (
-        <Box>
+        <Box flat>
             { content }
         </Box>
     )
