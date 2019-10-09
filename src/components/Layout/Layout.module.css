@@ -6,5 +6,6 @@
     overflow: hidden;
     width: 100%;
     flex: 1;
+    padding: var(--point) var(--point-4x);
     background-color: lightgray;
 }
