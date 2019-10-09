@@ -10,8 +10,6 @@ import { notesDictSelector } from 'src/selectors/notesSelectors';
 
 import { Paragraph } from 'src/components/typography';
 
-import s from './Note.module.css';
-
 interface INoteOwnProps {
     id: string,
 }
@@ -30,7 +28,7 @@ const Note: React.FC<INoteOwnProps & INoteStateProps & INoteDispatchProps> = (pr
     const handleButtonClick = React.useCallback(() => removeNote(id), [id, removeNote]);
 
     return (
-        <Card elevation={Elevation.ONE} interactive className={s.root}>
+        <Card elevation={Elevation.ONE} interactive>
             <Paragraph>{text}</Paragraph>
             <Button icon="cube-remove" onClick={handleButtonClick}/>
         </Card>
