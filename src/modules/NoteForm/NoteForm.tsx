@@ -63,12 +63,14 @@ class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
         const { handleSubmit, form } = props;
 
         return (
-            <Box flat>
+            <Box flat collapseHorizontal>
                 <form onSubmit={pipe(handleSubmit, form.reset)}>
                     <Box flat collapse display="flex" flexDirection="row" justifyContent="stretch">
                         <TextInput name="title" leftIcon="new-object" />
                         <TextInput name="description" fill/>
-                        <Button type="submit" text={ADD}/>
+                        <Box collapse display="flex" justifyContent="stretch" alignItems="stretch">
+                            <Button type="submit" text={ADD}/>
+                        </Box>
                     </Box>
                 </form>
             </Box>
