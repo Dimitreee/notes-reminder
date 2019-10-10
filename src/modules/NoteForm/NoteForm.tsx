@@ -7,23 +7,24 @@ import { connect } from 'react-redux';
 import { Button } from '@blueprintjs/core';
 
 import Box from 'src/components/Box/Box';
-import List from 'src/components/List';
 import TextInput from 'src/components/TextInput';
 
-import { Note } from 'src/types/core';
+import { INote } from 'src/types/core';
 import { addNote } from 'src/store/notes/actions';
 import { AppState } from 'src/store';
 
 import { ADD } from 'src/constants/static/labels';
+import { NOTE_FORM_INITIAL_VALUES } from './constants';
 
 import { noteFormValidator } from './noteFormValidators';
 
 export interface INoteFormValues {
-    text: string,
+    title: string,
+    description: string,
 }
 
 interface IDispatchProps {
-    addNote: (note: Note) => void;
+    addNote: (note: INote) => void;
 }
 
 interface IOwnProps {
@@ -34,19 +35,19 @@ const { Form } = withTypes<INoteFormValues>();
 
 class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
     private static defaulProps = {
-        initialValues: { text: '' }
+        initialValues: NOTE_FORM_INITIAL_VALUES,
     };
 
     private handleSubmit = (values: INoteFormValues) => {
-        const note: Note = {
+        const note: INote = {
             id: uuid.v1(),
-            text: values.text,
+            ...values,
         };
 
         this.props.addNote(note)
     };
 
-    public render () {
+    public render() {
         return (
             <Form
                 onSubmit={this.handleSubmit}
@@ -62,12 +63,13 @@ class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
         const { handleSubmit, form } = props;
 
         return (
-            <Box flat collapse>
+            <Box flat>
                 <form onSubmit={pipe(handleSubmit, form.reset)}>
-                    <List>
-                        <TextInput name="text" leftIcon="new-object" fill/>
+                    <Box flat collapse display="flex" flexDirection="row" justifyContent="stretch">
+                        <TextInput name="title" leftIcon="new-object" />
+                        <TextInput name="description" fill/>
                         <Button type="submit" text={ADD}/>
-                    </List>
+                    </Box>
                 </form>
             </Box>
         )
@@ -75,7 +77,7 @@ class NoteForm extends React.PureComponent<IOwnProps & IDispatchProps> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    addNote: (note: Note) => {
+    addNote: (note: INote) => {
         dispatch(addNote(note))
     }
 });

@@ -9,9 +9,10 @@ import s from './TextInput.module.css'
 
 interface ITextInputProps {
     name: string,
-    leftIcon: IconName | MaybeElement,
-    fill: boolean,
+    fill?: boolean,
+    leftIcon?: IconName | MaybeElement,
     withError?: boolean,
+    placeholder?: string,
 }
 
 class TextInput extends React.PureComponent<ITextInputProps> {
@@ -35,6 +36,7 @@ class TextInput extends React.PureComponent<ITextInputProps> {
                 <InputGroup
                     {...input}
                     large
+                    placeholder={this.props.placeholder}
                     leftIcon={this.props.leftIcon}
                     fill={this.props.fill}
                     className={errorInputClassNames}

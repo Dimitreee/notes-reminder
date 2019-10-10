@@ -6,9 +6,9 @@ interface INoteFormErrors {
 }
 const noteFormValidator = (values: INoteFormValues): INoteFormErrors  => {
     let errors: INoteFormErrors = {};
-    const { text } = values;
+    const { title } = values;
 
-    if (!text || text.length === 0) {
+    if (!title || title.length === 0) {
         errors.text = FIELD_IS_REQUIRED
     }
 

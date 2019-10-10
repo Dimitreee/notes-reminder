@@ -1,4 +1,4 @@
-import { Note } from 'src/types/core'
+import { INote } from 'src/types/core'
 
 export enum NoteActionTypes {
     ADD_NOTE = '@@notes/ADD_NOTE',
@@ -7,7 +7,7 @@ export enum NoteActionTypes {
 }
 
 export interface NotesDict {
-    [id: string]: Note,
+    [id: string]: INote,
 }
 
 export type NotesIds = string[];

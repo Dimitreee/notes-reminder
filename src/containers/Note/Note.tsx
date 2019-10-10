@@ -9,6 +9,8 @@ import { removeNote } from 'src/store/notes/actions';
 import { notesDictSelector } from 'src/selectors/notesSelectors';
 
 import TemplateCard from 'src/components/TemplateCard';
+import { Paragraph } from 'src/components/typography'
+import { INote } from 'src/types/core';
 
 
 interface INoteOwnProps {
@@ -16,8 +18,7 @@ interface INoteOwnProps {
 }
 
 interface INoteStateProps {
-    id: string,
-    text: string,
+    note: INote,
 }
 
 interface INoteDispatchProps {
@@ -25,12 +26,15 @@ interface INoteDispatchProps {
 }
 
 const Note: React.FC<INoteOwnProps & INoteStateProps & INoteDispatchProps> = (props) => {
-    const { id, text, removeNote, } = props;
+    const { id, note, removeNote, } = props;
     const handleDeleteButtonClick = React.useCallback(() => removeNote(id), [id, removeNote]);
 
     return (
         <TemplateCard controls={{ minimal: true, icon: 'delete', onClick: handleDeleteButtonClick }}>
-            <H5>{text}</H5>
+            <>
+                <H5>{note.title}</H5>
+                { note.description && <Paragraph>{note.description}</Paragraph> }
+            </>
         </TemplateCard>
     );
 };
@@ -44,7 +48,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 const mapStateToProps = (state: AppState, ownProps: INoteOwnProps) => {
     const notesDict = notesDictSelector(state);
 
-    return notesDict[ownProps.id]
+    return { note: notesDict[ownProps.id] }
 };
 
 export default connect<INoteStateProps, INoteDispatchProps, INoteOwnProps, AppState>(
