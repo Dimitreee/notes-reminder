@@ -34,19 +34,19 @@
     padding: var(--point) 0;
 }
 
-.displayFlex {
+.display-flex {
     display: flex;
 }
 
-.displayBlock {
+.display-block {
     display: block;
 }
 
-.displayInlineBlock {
+.display-inlineBlock {
     display: inline-block;
 }
 
-.displayInlineFlex {
+.display-inlineFlex {
     display: inline-flex;
 }
 
@@ -100,4 +100,8 @@
 
 .alignItems-center {
     align-items: center;
+}
+
+.alignItems-stretch {
+    align-items: stretch;
 }

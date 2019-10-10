@@ -9,7 +9,7 @@ interface IBoxProps {
     flat?: boolean,
     flexDirection?: 'row' | 'column' | 'rowReverse' | 'columnReverse',
     justifyContent?: 'flexStart' | 'spaceBetween' | 'spaceAround' | 'flexEnd' | 'spaceEvenly' | 'stretch',
-    alignItems?: 'flexStart' | 'center' | 'flexEnd',
+    alignItems?: 'flexStart' | 'center' | 'flexEnd' | 'stretch',
     collapse?: boolean,
     collapseTop?: boolean,
     collapseLeft?: boolean,
@@ -38,10 +38,10 @@ const Box: React.FC<IBoxProps> = (props) => {
 
     const className = classNames(
         s.root,
-        s[`${display}`],
+        s[`display-${display}`],
         {
             [s[`flexDirection-${flexDirection}`]]: flexDirection ,
-            [s[`justfyContent-${justifyContent}`]]: justifyContent ,
+            [s[`justifyContent-${justifyContent}`]]: justifyContent ,
             [s[`alignItems-${alignItems}`]]: alignItems ,
             [s.flat]: flat,
             [s.collapse]: collapse,

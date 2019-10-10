@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {Dispatch} from 'redux';
+import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { Card, Elevation, Button } from '@blueprintjs/core';
+import { Card, Elevation, Button, H5, } from '@blueprintjs/core';
 
 import { AppState } from 'src/store';
 import { removeNote } from 'src/store/notes/actions';
 import { notesDictSelector } from 'src/selectors/notesSelectors';
 
-import { Paragraph } from 'src/components/typography';
+import Box from 'src/components/Box';
 
 
 interface INoteOwnProps {
@@ -26,12 +26,18 @@ interface INoteDispatchProps {
 
 const Note: React.FC<INoteOwnProps & INoteStateProps & INoteDispatchProps> = (props) => {
     const { id, text, removeNote, } = props;
-    const handleButtonClick = React.useCallback(() => removeNote(id), [id, removeNote]);
+    const handleDeleteButtonClick = React.useCallback(() => removeNote(id), [id, removeNote]);
 
     return (
         <Card elevation={Elevation.ONE} interactive>
-            <Paragraph>{text}</Paragraph>
-            <Button icon="cube-remove" onClick={handleButtonClick}/>
+            <Box display="flex" flexDirection="row" justifyContent="spaceBetween" alignItems="stretch">
+                <Box flat>
+                    <H5>{text}</H5>
+                </Box>
+                <Box display="flex" flexDirection="column" justifyContent="flexStart">
+                    <Button minimal icon="delete" onClick={handleDeleteButtonClick}/>
+                </Box>
+            </Box>
         </Card>
     );
 };
